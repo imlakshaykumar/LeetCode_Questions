@@ -13,6 +13,7 @@ package Arrays;
  */
 
 public class RichestCustomer {
+
     public int maximumWealth(int[][] accounts) {
         int sum;
         int maxWealth = 0;
