@@ -1,7 +1,7 @@
 package Arrays;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.List;
 
 // import java.util.Arrays;
@@ -11,22 +11,43 @@ import java.util.List;
  */
 public class KidsArray {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-        List<Boolean> result = new ArrayList<>();
-
-        // this will convert array into a stream and get the max value as int
-        int max = Arrays.stream(candies).max().getAsInt();
-        int i = 0;
         int n = candies.length;
-        while (i < n) {
-            // add true if (candies[i] += extraCandies) >= max
-            // else false
-            result.add((candies[i] += extraCandies) >= max ? true : false);
-            i++;
+        List<Boolean> result = new ArrayList<>(n);
+
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (candies[i] > max) {
+                max = candies[i];
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            // if the condition is true then add true
+            // otherwise, false
+            // result.add(i, (candies[i] + extraCandies >= max));
+            result.add(candies[i] + extraCandies >= max);
         }
         return result;
     }
 
-    // We can also do this question like this:
+    // OR
+
+    // public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+    // List<Boolean> result = new ArrayList<>();
+
+    // // this will convert array into a stream and get the max value as int
+    // int max = Arrays.stream(candies).max().getAsInt();
+    // int i = 0;
+    // int n = candies.length;
+    // while (i < n) {
+    // // add true if (candies[i] += extraCandies) >= max
+    // // else false
+    // result.add((candies[i] += extraCandies) >= max ? true : false);
+    // i++;
+    // }
+    // return result;
+    // }
+
+    // OR
 
     // public static void main(String[] args) {
     // int[] candies = { 12, 1, 12 };
